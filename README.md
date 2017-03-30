@@ -1,7 +1,7 @@
 # Plextras.js
 Minor customizations to plex/web plugin
 
-This is a personal fork of Plextras by @andrewiankidd He was kind enough to help adapt his script to my personal use case. It is now most suitible for use with the incredible [Organizr](https://github.com/causefx/Organizr) project, in that it will allow basic ui adjustments (Mainly background and top bar), and most importantly, the minimized sidebar will only appear on mobile. This is especially useful for users of organizr who do not wish to change the sidebar on desktop, but need the slim bar for mobile. Without that, the plex ui is completely useless in portrait mode on a mobild device. So a huge thank you to @andrewiankidd for enabeling this functionality!
+This is a personal fork of Plextras by @andrewiankidd and still a WIP. He was kind enough to help adapt his script to my personal use case. It is now most suitible for use with the incredible [Organizr](https://github.com/causefx/Organizr) project, in that it will allow basic ui adjustments (Mainly background and top bar), and most importantly, the minimized sidebar will only appear on mobile. This is especially useful for users of organizr who do not wish to change the sidebar on desktop, but need the slim bar for mobile. Without that, the plex ui is completely useless in portrait mode on a mobild device. So a huge thank you to @andrewiankidd for enabeling this functionality!
 
 
 ## Options
