@@ -4,7 +4,7 @@
 var delayInt = 2500;
 var cssBGColor = '#132232';
 var cssTopBarColor = '#2B3E50';
-var showCustomTopBarColor = true;
+var showTopBarColor = true;
 var showCustomBackgroundImage = true;
 var autohideSidebar = false;
 var autoHideSidebarMobileOnly = true;
@@ -79,7 +79,7 @@ function loadCustomStyles(){
 		$('head').append('<style type="text/css">'+ bgcss +'</style>');
 	}
 	
-	if (showCustomTopBarColor==true)
+	if (showTopBarColor==true)
 	{
 		var bgcss = '.nav-bar{background-color:cssTopBarColor;}';
 		$('head').append('<style type="text/css">'+ bgcss +'</style>');
