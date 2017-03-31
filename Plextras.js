@@ -5,6 +5,7 @@ var delayInt = 2500;
 var cssBGColor = '#132232';
 var cssTopBarColor = '#2B3E50';
 var showCustomTopBarColor = true;
+var showCustomBackgroundImage = true;
 var autohideSidebar = false;
 var autoHideSidebarMobileOnly = true;
 var showArtWorkBackground = true;
@@ -72,6 +73,12 @@ function loadCustomStyles(){
 		});
 	}
 
+	if (showCustomBackgroundImage==true)
+	{
+		var bgcss = '#content{background-image: url("https://i.imgur.com/Ynz8mjw.png") no-repeat center center fixed;webkit-background-size: cover;moz-background-size: cover;o-background-size: cover;background-size: cover;}';
+		$('head').append('<style type="text/css">'+ bgcss +'</style>');
+	}
+	
 	if (showCustomTopBarColor==true)
 	{
 		var bgcss = '.nav-bar{background-color:cssTopBarColor;}';
