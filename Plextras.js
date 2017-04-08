@@ -2,18 +2,18 @@
 //////////////////Settings//////////////////////////
 ////////////////////////////////////////////////////
 var delayInt = 2500;
-var cssBGColor = '#3f4245';
+var cssBGColor = '#132232';
 var showCustomBackgroundImage = false;
-var autohideSidebar = true;
-var autoHideSidebarMobileOnly = false;
+var showCustomTopBarColor = true;
+var autohideSidebar = false;
+var autoHideSidebarMobileOnly = true;
 var showArtWorkBackground = true;
-var showEpisodeSpecificArtwork = true;
+var showEpisodeSpecificArtwork = false;
 var ShowExpandedExtras = true;
 var hideMovieExtras = false; //NOTE!!!: ShowExpandedExtras takes priority
 var hideCastList = false;
 var hideRelatedMedia = false;
-var customHeader = "Custom Links";
-var customLinks = {'Home':'javascript:switchPort(80)', 'Requests':'javascript:switchPort(3000)', 'Uptime':'javascript:internalLink("https://stats.uptimerobot.com/q7BGEHzZz")', 'GitHub':'https://github.com/andrewiankidd/Plextras.js'};
+var autoSignIn = false;
 ////////////////////////////////////////////////////
 ////////////////////////////////////////////////////
 ////////////////////////////////////////////////////
@@ -77,6 +77,13 @@ function loadCustomStyles(){
 		var bgcss = '#content{background-image: url("https://i.imgur.com/Ynz8mjw.png");background-repeat: repeat-xy;}';
 		$('head').append('<style type="text/css">'+ bgcss +'</style>');
 	}
+
+
+	if (showCustomTopBarColor==true)
+	{
+		var bgcss = '.nav-bar{background-color:#132232!important;}';
+		$('head').append('<style type="text/css">'+ bgcss +'</style>');
+	}
 	
 	if (ShowExpandedExtras==true)
 	{
@@ -119,6 +126,13 @@ function loadExtraSettings(){
 			$('head').append('<style type="text/css">[class^="PrePlayArtwork-imageContainer-"] div{background-image: '+ tvThumb +'!important; transition: 0.5s;}</style>');
 		}		
 	}
+	
+	if (autoSignIn!=false)
+	{
+		$('#username').val(autoSignIn[0]);
+		$('#password').val(autoSignIn[1]);
+		$('.btn-lg').trigger('click');
+	}
 }
 
 function loadSidebarSettings(){
@@ -136,53 +150,4 @@ function loadSidebarSettings(){
 		hideSidebarCSS += '.sidebar-container:hover [class^="SidebarLink-title"], .sidebar-container:hover [class^="SidebarServerLibraries-librariesTitle"], .sidebar-container:hover [class^="SidebarList-sidebarListHeader"]{font-size: inherit;}.sidebar-container:hover [class^="SidebarLibrariesActions-actions"], .sidebar-container:hover [class^="SidebarLink-children"], .sidebar-container:hover [class^="ServerMenuButton-serverMenuTitle"]{display: inherit;}.sidebar-container:hover [class^="SidebarLibraryItem-action"]{width: inherit;}.sidebar-container:hover{width: inherit;}';
 		$('head').append('<style type="text/css">'+ hideSidebarCSS +'</style>');
 	}
-}
-
-
-function loadCustomSection(){
-	console.log('[Plextras.js] Adding custom links section');
-
-	//locate navigation sidebar
-	var navdiv = $('div[role="navigation"]').parent();
-
-	//copy the 'Online Content' section as a template
-	var newsec = $('div[role="navigation"]:last').clone();
-	newsec.attr('class', 'customSection');
-
-	//edit Section Header name
-	newsec.find('div[role="header"]').html(customHeader);
-
-	//copy Recommended link as template
-	var linktemplate = newsec.find("div[class^='SidebarListItem-sidebarListItem-']:last");
-
-	//remove all default links
-	newsec.find('[class^="SidebarListItem-sidebarListItem"]').remove();
-
-	//start appending custom links
-	for (var key in customLinks) {
-		newsec = newsec.clone();
-		var newlink = linktemplate;
-		newlink.find('a').attr("href", customLinks[key]);
-		newlink.find('[class^="SidebarLink-title"]').html(key);
-		newlink.find('a').attr('target', '_blank');
-		newsec.append(newlink);
-	}
-
-	//append the custom section
-	navdiv.append(newsec);
-	return "done";
-}
-
-function switchPort(port)
-{
-	var newurl = "//" + location.hostname + ":" + port;
-	console.log('newurl: ' + newurl);
-	window.location.href = newurl;
-}
-
-function internalLink(thelink)
-{
-	var pagecontainer = $('.ReactSidebarPageView-pageContainer-1bcfz');
-	var newhtml = "<iframe id='PlextrasIframe' width='100%' height='100%' src='" + thelink + "'>";
-	pagecontainer.html(newhtml);
 }
