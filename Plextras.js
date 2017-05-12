@@ -2,7 +2,7 @@
 //////////////////Settings//////////////////////////
 ////////////////////////////////////////////////////
 var delayInt = 2500;
-var cssBGColor = '#132232';
+var cssBGColor = '#2B3E50';
 var showCustomBackgroundImage = false;
 var showCustomTopBarColor = true;
 var autohideSidebar = false;
